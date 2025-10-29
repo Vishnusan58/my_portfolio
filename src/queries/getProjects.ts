@@ -1,4 +1,4 @@
-import { projectsData } from '../data/vishnuProfile';
+import { projectsData } from '../profileData';
 import { Project } from '../types';
 
 export async function getProjects(): Promise<Project[]> {

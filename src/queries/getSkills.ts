@@ -1,4 +1,4 @@
-import { skillsData } from '../data/vishnuProfile';
+import { skillsData } from '../profileData';
 import { Skill } from '../types';
 
 export async function getSkills(): Promise<Skill[]> {

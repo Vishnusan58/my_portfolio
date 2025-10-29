@@ -1,4 +1,4 @@
-import { profileBannerData } from '../data/vishnuProfile';
+import { profileBannerData } from '../profileData';
 import { ProfileBanner } from '../types';
 
 export async function getProfileBanner(): Promise<ProfileBanner> {

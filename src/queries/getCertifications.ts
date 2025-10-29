@@ -1,4 +1,4 @@
-import { certificationsData } from '../data/vishnuProfile';
+import { certificationsData } from '../profileData';
 import { Certification } from '../types';
 
 export async function getCertifications(): Promise<Certification[]> {
