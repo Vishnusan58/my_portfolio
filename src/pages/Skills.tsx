@@ -81,10 +81,14 @@ const Skills: React.FC = () => {
             {skills.map((skill, idx) => (
               <div key={idx} className="skill-card">
                 <div className="icon">{iconMap[skill.icon] || <FaReact />}</div>
-                <h3 className="skill-name">
-                  {skill.name.split('').map((letter, letterIndex) => (
-                    <span key={letterIndex} className="letter" style={{ animationDelay: `${letterIndex * 0.05}s` }}>
-                      {letter}
+                <h3 className="skill-name" aria-label={skill.name}>
+                  {Array.from(skill.name).map((char, charIndex) => (
+                    <span
+                      key={charIndex}
+                      className={`letter${char === ' ' ? ' letter-space' : ''}`}
+                      style={{ animationDelay: `${charIndex * 0.05}s` }}
+                    >
+                      {char === ' ' ? '\u00A0' : char}
                     </span>
                   ))}
                 </h3>

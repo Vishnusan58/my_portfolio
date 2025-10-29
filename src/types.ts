@@ -37,8 +37,11 @@ export interface Certification {
   title: string;
   issuer: string;
   issuedDate: string;
+  expiryDate?: string;
+  credentialId?: string;
   link: string;
   iconName: string;
+  skills?: string[];
 }
 
 export interface ContactMe {
