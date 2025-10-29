@@ -37,3 +37,18 @@
     transform: translateY(0);
   }
 }
+
+.timeline-content {
+  color: #111;
+}
+
+.timeline-bullets {
+  margin-top: 0.75rem;
+  padding-left: 1.25rem;
+  color: #111;
+}
+
+.timeline-bullets li {
+  margin-bottom: 0.4rem;
+  line-height: 1.4;
+}

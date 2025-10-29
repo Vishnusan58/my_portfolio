@@ -5,6 +5,19 @@
   height: 100vh;
   background-color: #141414;
   overflow: hidden;
+  position: relative;
+}
+
+.netflix-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(229, 9, 20, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  animation: pulseGlow 3s ease-in-out;
 }
 
 .netflix-logo {
@@ -12,27 +25,47 @@
   height: auto;
   opacity: 0;
   transform: scale(0.8);
-  animation: fadeIn 0.5s forwards ease-in;
+  animation: fadeInLogo 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  filter: drop-shadow(0 0 30px rgba(229, 9, 20, 0.5));
 }
 
-@keyframes fadeIn {
+@keyframes fadeInLogo {
   to {
     opacity: 1;
     transform: scale(1);
   }
 }
 
+@keyframes pulseGlow {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .animate.netflix-logo {
-  animation: zoomOut 3s forwards ease-in-out;
+  animation: zoomOut 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes zoomOut {
-  0%, 80% {
-    transform: scale(0.8);
+  0% {
+    transform: scale(1);
     opacity: 1;
+    filter: drop-shadow(0 0 30px rgba(229, 9, 20, 0.5));
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+    filter: drop-shadow(0 0 50px rgba(229, 9, 20, 0.8));
   }
   100% {
     transform: scale(3);
     opacity: 0;
+    filter: drop-shadow(0 0 80px rgba(229, 9, 20, 0));
   }
 }

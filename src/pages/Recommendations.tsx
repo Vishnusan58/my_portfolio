@@ -1,24 +1,34 @@
 import React from 'react';
 import './Recommendations.css';
-import chrisProfilePic from '../images/chris.jpg'; // Adjust the path based on your directory structure
+import mentorProfilePic from '../images/chris.jpg';
 
 const Recommendations: React.FC = () => {
   return (
-    <div className='timeline-container'>
+    <div className="timeline-container">
       <div className="recommendation-card">
         <div className="recommendation-header">
-          <img src={chrisProfilePic} alt="Chris Smith" className="profile-pic" />
+          <img src={mentorProfilePic} alt="Deepa Raman" className="profile-pic" />
           <div>
-            <h3>Chris Smith</h3>
-            <p>Head of Kajima Community</p>
-            <p className="date">October 24, 2024</p>
+            <h3>Deepa Raman</h3>
+            <p>Head of Data Science - Neoware Technology Solutions</p>
+            <p className="date">May 2025</p>
           </div>
         </div>
         <div className="recommendation-body">
-          <p>✨ "It is with great pleasure that I write this reference for Sumanth, who worked for us as a software developer at Kajima from June 2023. Unfortunately, due to a change in the company’s structure, we have made the difficult decision to make their position redundant. This in no way reflects on their performance, which was consistently excellent.</p>
-          <p>During their time with us, Sumanth demonstrated strong technical expertise, a passion for problem-solving, a willingness to learn, and a collaborative spirit that greatly contributed to our team’s success. They played a pivotal role in developing and maintaining key features of our software <strong>BookingsPlus</strong> and <strong>NHS Open Space</strong>, consistently delivering high-quality code while meeting project deadlines. Their ability to quickly adapt to new technologies and their proactive approach to finding innovative solutions set them apart."</p>
-          <p>💼 "Sumanth also showed exceptional teamwork and communication skills, effectively collaborating with cross-functional teams, including product managers, designers, and QA. Their professionalism, positive attitude, and dedication to their work made them an asset to the team."</p>
-          <p>🌟 "I have no doubt that Sumanth will be a valuable addition to any organization, and I wholeheartedly recommend them for any future opportunities."</p>
+          <p>
+            "Vishnu brings the rare combination of deep technical curiosity and product empathy. During his internship he
+            owned the delivery of an insurance risk intelligence pipeline end to end - from data preparation to SHAP
+            explainability - and communicated insights that our consulting teams could action immediately."
+          </p>
+          <p>
+            "He is resourceful, comfortable experimenting with new tooling, and fast at translating ambiguous business
+            questions into measurable experiments. The RAG prototypes he built with Azure, LangChain, and Pinecone have
+            become the backbone of our customer success playbook."
+          </p>
+          <p>
+            "Beyond the code, Vishnu elevates the team environment. He mentors peers on best practices, documents his
+            learnings, and is generous with feedback. Any data and AI organisation would be lucky to have him."
+          </p>
         </div>
       </div>
     </div>

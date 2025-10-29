@@ -9,7 +9,7 @@ type ProfileType = 'recruiter' | 'developer' | 'stalker' | 'adventure';
 
 const ProfilePage: React.FC = () => {
   const location = useLocation();
-  const backgroundGif = location.state?.backgroundGif || "https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif"; // Default GIF
+  const backgroundGif = location.state?.backgroundGif || "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTZ5eWwwbjRpdWM1amxyd3VueHhteTVzajVjeGZtZGJ1dDc4MXMyNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9dg/16u7Ifl2T4zYfQ932F/giphy.gif"; // Default GIF
   const { profileName } = useParams<{ profileName: string }>();
 
   const profile = ['recruiter', 'developer', 'stalker', 'adventure'].includes(profileName!)

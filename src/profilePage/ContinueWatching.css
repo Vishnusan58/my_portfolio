@@ -1,15 +1,19 @@
 .continue-watching-row {
   padding: 20px;
   color: #fff;
+  opacity: 0;
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
 }
 
 .continue-watching-row:hover {
- cursor: pointer;
+  cursor: pointer;
 }
 
 .row-title {
   font-size: 1.5rem;
   margin-bottom: 10px;
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
 }
 
 .card-row {
@@ -17,11 +21,26 @@
   gap: 10px;
   overflow-x: auto;
   padding-bottom: 10px;
-  scrollbar-width: none; /* For Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #555 transparent;
+  scroll-behavior: smooth;
 }
 
 .card-row::-webkit-scrollbar {
-  display: none; /* For Chrome, Safari, and Edge */
+  height: 8px;
+}
+
+.card-row::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.card-row::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.card-row::-webkit-scrollbar-thumb:hover {
+  background: #888;
 }
 
 .pick-card {
@@ -30,11 +49,25 @@
   flex: 0 0 auto;
   border-radius: 5px;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  animation: slideInCard 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  will-change: transform;
 }
 
+.pick-card:nth-child(1) { animation-delay: 0.4s; }
+.pick-card:nth-child(2) { animation-delay: 0.5s; }
+.pick-card:nth-child(3) { animation-delay: 0.6s; }
+.pick-card:nth-child(4) { animation-delay: 0.7s; }
+.pick-card:nth-child(5) { animation-delay: 0.8s; }
+.pick-card:nth-child(6) { animation-delay: 0.9s; }
+
 .pick-card:hover {
-  transform: scale(1.05); /* Slight zoom effect on hover */
+  transform: scale(1.08) translateY(-5px);
+  box-shadow: 0 8px 20px rgba(229, 9, 20, 0.4),
+              0 4px 10px rgba(0, 0, 0, 0.6);
+  z-index: 10;
 }
 
 .pick-image {
@@ -42,6 +75,13 @@
   height: 100%;
   display: block;
   object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pick-card:hover .pick-image {
+  transform: scale(1.1);
+  filter: brightness(0.8);
 }
 
 .overlay {
@@ -50,12 +90,17 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Blackish overlay */
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    transparent 100%
+  );
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 1;
-  transition: opacity 0.3s ease;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .pick-card:hover .overlay {
@@ -66,9 +111,37 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -30%);
   color: #fff;
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.pick-card:hover .pick-label {
+  transform: translate(-50%, -50%);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInCard {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

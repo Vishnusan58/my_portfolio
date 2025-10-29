@@ -4,12 +4,18 @@
   color: #fff;
   max-width: 1000px;
   margin: auto;
+  min-height: 100vh;
+  opacity: 0;
+  animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .skills-title {
   font-size: 2.5rem;
   color: #e50914; /* Netflix red */
   margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
 }
 
 .skills-grid {
@@ -25,32 +31,48 @@
   padding: 20px;
   text-align: center;
   color: #e6e6e6;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.3s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: calc(var(--index, 0) * 0.05s);
+  will-change: transform;
 }
 
 .skill-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(255, 0, 0, 0.5); /* Netflix red glow on hover */
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(229, 9, 20, 0.5),
+              0 8px 20px rgba(0, 0, 0, 0.6);
   cursor: pointer;
+  background-color: #252525;
 }
 
 .icon {
   font-size: 2rem;
   color: #e50914; /* Netflix red */
   margin-bottom: 10px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.3s ease;
+}
+
+.skill-card:hover .icon {
+  transform: scale(1.2) rotateY(360deg);
+  color: #ff0a16;
 }
 
 .skill-name {
   display: flex;
   justify-content: center;
+  font-weight: 600;
 }
 
 .letter {
   display: inline-block;
   opacity: 0;
   transform: translateY(-20px);
-  animation: dropIn 0.5s forwards ease-out;
+  animation: dropIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes dropIn {
@@ -63,16 +85,11 @@
 .skill-description {
   font-size: 0.9rem;
   color: #999;
+  transition: color 0.3s ease;
 }
 
-
-.skills-title {
-  font-size: 2.5rem;
-  color: #da8185; /* Netflix red */
-  margin-bottom: 30px;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeSlideIn 1s ease forwards;
+.skill-card:hover .skill-description {
+  color: #ccc;
 }
 
 /* Category Animation */
@@ -85,7 +102,23 @@
   display: inline-block;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeSlideIn 0.8s ease forwards;
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  position: relative;
+}
+
+.category-title::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ff0a16;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.category-title:hover::after {
+  width: 100%;
 }
 
 .category-title:nth-child(1) {
@@ -104,10 +137,23 @@
   animation-delay: 1s;
 }
 
-/* Keyframe for Slide and Fade-in Animation */
-@keyframes fadeSlideIn {
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
   to {
     opacity: 1;
-    transform: translateY(10);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

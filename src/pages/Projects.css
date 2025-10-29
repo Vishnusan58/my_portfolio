@@ -2,6 +2,9 @@
   padding: 120px 20px;
   background-color: #141414;
   color: #fff;
+  min-height: 100vh;
+  opacity: 0;
+  animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .projects-grid {
@@ -15,16 +18,19 @@
   background: #1e1e1e;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 6px 15px rgba(160, 16, 16, 0.6); /* Base shadow */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
   opacity: 0;
-  animation: fadeInUp 0.5s forwards ease-in-out;
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   animation-delay: var(--delay);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
 }
 
 .project-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(244, 0, 13, 0.6); /* Netflix shadow */
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(229, 9, 20, 0.5),
+              0 10px 20px rgba(0, 0, 0, 0.6);
   cursor: pointer;
 }
 
@@ -33,11 +39,13 @@
   height: 200px;
   object-fit: cover;
   border-bottom: 2px solid #e50914;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project-card:hover .project-image {
-  transform: scale(1.05);
+  transform: scale(1.08);
+  filter: brightness(1.1);
 }
 
 .project-details {
@@ -46,15 +54,20 @@
 
 .project-details h3 {
   font-size: 1.2rem;
-  color: #e74e56;
-  margin-bottom: 10px;
   color: #e50914;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.project-card:hover .project-details h3 {
+  color: #ff0a16;
 }
 
 .project-details p {
   font-size: 0.8rem;
   margin-bottom: 15px;
   line-height: 1.2rem;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .tech-used {
@@ -72,18 +85,45 @@
   background: #2c2c2c;
   color: #fff;
   font-size: 0.8rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .tech-badge:hover {
-  transform: scale(1.1);
+  transform: translateY(-3px) scale(1.1);
   background-color: #e50914;
   color: #fff;
-  box-shadow: 0 4px 10px rgba(229, 9, 20, 0.6); /* Netflix shadow */
+  box-shadow: 0 6px 15px rgba(229, 9, 20, 0.6);
 }
 
 .tech-badge svg {
   margin-right: 5px;
   font-size: 1.2rem;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tech-badge:hover svg {
+  transform: rotate(360deg);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

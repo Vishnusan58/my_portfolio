@@ -1,12 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Netflix Sans',Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #141414;
+  overflow-x: hidden;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Global smooth transitions */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hide scrollbar but keep functionality */
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #141414;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #888;
 }

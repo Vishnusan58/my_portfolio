@@ -6,8 +6,6 @@ import { getProfileBanner } from '../queries/getProfileBanner';
 import { ProfileBanner as ProfileBannerType } from '../types';
 
 const ProfileBanner: React.FC = () => {
-
-
   const [bannerData, setBannerData] = useState<ProfileBannerType | null>(null);
 
   useEffect(() => {
@@ -20,25 +18,25 @@ const ProfileBanner: React.FC = () => {
 
   if (!bannerData) return <div>Loading...</div>;
 
-  const handlePlayClick = () => {
+  const handleResumeClick = () => {
     window.open(bannerData.resumeLink.url, '_blank');
   };
 
-  const handleLinkedinClick = () => { 
+  const handleLinkedinClick = () => {
     window.open(bannerData.linkedinLink, '_blank');
-  }
+  };
 
   return (
-    <div className="profile-banner">
+    <div className="profile-banner" style={{ backgroundImage: `url(${bannerData.backgroundImage.url})` }}>
       <div className="banner-content">
-        <h1 className="banner-headline" id='headline'>{bannerData.headline}</h1>
-        <p className="banner-description">
-          {bannerData.profileSummary}
-        </p>
+        <h1 className="banner-headline" id="headline">
+          {bannerData.headline}
+        </h1>
+        <p className="banner-description">{bannerData.profileSummary}</p>
 
         <div className="banner-buttons">
-          <PlayButton onClick={handlePlayClick} label="Resume" />
-          <MoreInfoButton onClick={handleLinkedinClick} label="Linkedin" />
+          <PlayButton onClick={handleResumeClick} label="Resume" />
+          <MoreInfoButton onClick={handleLinkedinClick} label="LinkedIn" />
         </div>
       </div>
     </div>

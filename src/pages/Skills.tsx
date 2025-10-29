@@ -1,34 +1,58 @@
 import React, { useEffect, useState } from 'react';
 import './Skills.css';
 import { getSkills } from '../queries/getSkills';
-
-import { FaReact, FaNodeJs, FaAws, FaDocker, FaGitAlt, FaJava } from 'react-icons/fa';
-import { SiRubyonrails, SiTypescript, SiPostgresql, SiMysql, SiKubernetes, SiGooglecloud, SiSpringboot, SiPhp, SiNetlify, SiHeroku, SiHtml5, SiCss3, SiRabbitmq, SiImessage } from 'react-icons/si';
+import {
+  FaReact,
+  FaAws,
+  FaDocker,
+  FaBrain,
+  FaRobot,
+  FaChartLine,
+  FaCloud,
+  FaDatabase,
+  FaPython,
+  FaJava,
+  FaRust,
+} from 'react-icons/fa';
+import {
+  SiTypescript,
+  SiTensorflow,
+  SiPostgresql,
+  SiMysql,
+  SiKubernetes,
+  SiGooglecloud,
+  SiSpringboot,
+  SiTableau,
+  SiPowerbi,
+  SiCsharp,
+} from 'react-icons/si';
 import { Skill } from '../types';
 
-const iconMap: { [key: string]: JSX.Element } = {
-  SiRubyonrails: <SiRubyonrails />,
-  FaNodeJs: <FaNodeJs />,
-  SiSpringboot: <SiSpringboot />,
+const iconMap: Record<string, JSX.Element> = {
+  FaBrain: <FaBrain />,
+  SiTensorflow: <SiTensorflow />,
+  FaRobot: <FaRobot />,
+  FaChartLine: <FaChartLine />,
+  FaCloud: <FaCloud />,
+  FaDatabase: <FaDatabase />,
+  FaPython: <FaPython />,
   FaJava: <FaJava />,
-  SiPhp: <SiPhp />,
+  FaRust: <FaRust />,
+  SiCsharp: <SiCsharp />,
+  SiTableau: <SiTableau />,
+  SiPowerbi: <SiPowerbi />,
   FaReact: <FaReact />,
-  SiTypescript: <SiTypescript />,
   FaAws: <FaAws />,
   FaDocker: <FaDocker />,
+  SiTypescript: <SiTypescript />,
   SiPostgresql: <SiPostgresql />,
   SiMysql: <SiMysql />,
   SiKubernetes: <SiKubernetes />,
   SiGooglecloud: <SiGooglecloud />,
-  SiHeroku: <SiHeroku />,
-  SiNetlify: <SiNetlify />,
-  SiRabbitmq: <SiRabbitmq />,
-  SiImessage: <SiImessage />,
+  SiSpringboot: <SiSpringboot />,
 };
 
-
 const Skills: React.FC = () => {
-
   const [skillsData, setSkillsData] = useState<Skill[]>([]);
 
   useEffect(() => {
@@ -37,30 +61,29 @@ const Skills: React.FC = () => {
       setSkillsData(data);
     }
 
-    fetchSkills()
+    fetchSkills();
   }, []);
 
   if (skillsData.length === 0) return <div>Loading...</div>;
 
-  const skillsByCategory = skillsData.reduce((acc: any, skill: any) => {
+  const skillsByCategory = skillsData.reduce<Record<string, Skill[]>>((acc, skill) => {
     if (!acc[skill.category]) acc[skill.category] = [];
     acc[skill.category].push(skill);
     return acc;
   }, {});
 
-
   return (
     <div className="skills-container">
-      {Object.keys(skillsByCategory).map((category, index) => (
+      {Object.entries(skillsByCategory).map(([category, skills], index) => (
         <div key={index} className="skill-category">
           <h3 className="category-title">{category}</h3>
           <div className="skills-grid">
-            {skillsByCategory[category].map((skill: any, idx: number) => (
+            {skills.map((skill, idx) => (
               <div key={idx} className="skill-card">
                 <div className="icon">{iconMap[skill.icon] || <FaReact />}</div>
                 <h3 className="skill-name">
-                  {skill.name.split('').map((letter: any, i: number) => (
-                    <span key={i} className="letter" style={{ animationDelay: `${i * 0.05}s` }}>
+                  {skill.name.split('').map((letter, letterIndex) => (
+                    <span key={letterIndex} className="letter" style={{ animationDelay: `${letterIndex * 0.05}s` }}>
                       {letter}
                     </span>
                   ))}

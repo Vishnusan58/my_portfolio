@@ -1,58 +1,50 @@
-// Reading.tsx
-
 import React from 'react';
 import './Reading.css';
-import atomicHabits from '../images/atomic_habits.jpg';
-import richDadPoorDad from '../images/rich_dad_poor_dad.jpg';
-import alchemist from '../images/alchemist.jpg';
-import eatThatFrog from '../images/eat_that_frog.jpg';
-import vijayanikiAidhuMetlu from '../images/vijayaniki_aidu_metlu.jpg';
-import venneloAdapilla from '../images/vennelo_adapilla.jpeg';
 
 const books = [
   {
-    title: "Atomic Habits",
-    author: "James Clear",
-    imgSrc: atomicHabits,
-    description: "A practical guide to building good habits and breaking bad ones.",
+    title: 'Designing Data-Intensive Applications',
+    author: 'Martin Kleppmann',
+    imgSrc: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80',
+    description: 'Essential mental models for distributed systems and the data platforms behind modern AI products.',
   },
   {
-    title: "Rich Dad Poor Dad",
-    author: "Robert Kiyosaki",
-    imgSrc: richDadPoorDad,
-    description: "An eye-opener on wealth, assets, and financial literacy.",
+    title: 'Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow',
+    author: 'Aurélien Géron',
+    imgSrc: 'https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=400&q=80',
+    description: 'My go-to reference for rapidly prototyping and validating machine learning ideas in Python.',
   },
   {
-    title: "The Alchemist",
-    author: "Paulo Coelho",
-    imgSrc: alchemist,
-    description: "A magical journey of following one's dreams.",
+    title: 'Deep Learning with Python',
+    author: 'François Chollet',
+    imgSrc: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=400&q=80',
+    description: 'Helped me internalise Keras fundamentals and accelerate my computer vision research.',
   },
   {
-    title: "Eat That Frog",
-    author: "Brian Tracy",
-    imgSrc: eatThatFrog,
-    description: "A motivational book on overcoming procrastination.",
+    title: 'Building Microservices',
+    author: 'Sam Newman',
+    imgSrc: 'https://images.unsplash.com/photo-1487014679447-9f8336841d58?auto=format&fit=crop&w=400&q=80',
+    description: 'Shaping how I architect data and AI services that are resilient, testable, and team-friendly.',
   },
   {
-    title: "Vijayaniki Aidhu Metlu",
-    author: "Yandamoori Veerendranath",
-    imgSrc: vijayanikiAidhuMetlu,
-    description: "An inspirational Telugu book for personal growth.",
+    title: 'Storytelling with Data',
+    author: 'Cole Nussbaumer Knaflic',
+    imgSrc: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80',
+    description: 'Guides my approach to building dashboards and presenting insights to business partners.',
   },
   {
-    title: "Vennelo Adapilla",
-    author: "Yandamoori Veerendranath",
-    imgSrc: venneloAdapilla,
-    description: "A classic Telugu romantic novel that touches the heart.",
+    title: 'Range',
+    author: 'David Epstein',
+    imgSrc: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80',
+    description: 'A reminder that polymathic thinking - across coding, analytics, and storytelling - compounds over time.',
   },
 ];
 
 const Reading: React.FC = () => {
   return (
     <div className="reading-container">
-      <h2 className="reading-title">📚 Books That Shaped My Journey</h2>
-      <p className="reading-intro">These books have influenced my perspectives, motivation, and self-growth.</p>
+      <h2 className="reading-title">Books Powering My Curiosity</h2>
+      <p className="reading-intro">I read to blend systems thinking, machine learning craft, and storytelling.</p>
       <div className="books-grid">
         {books.map((book, index) => (
           <div key={index} className="book-card" style={{ '--delay': `${index * 0.1}s` } as React.CSSProperties}>
